@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 import glob
 import os
 
-import six
 import pytest
 
 from html_text import (extract_text, parse_html, cleaned_selector,
@@ -127,9 +125,6 @@ def test_selectors(all_options):
 
 
 def test_nbsp():
-    if six.PY2:
-        raise pytest.xfail("&nbsp; produces '\xa0' in Python 2, "
-                           "but ' ' in Python 3")
     html = "<h1>Foo&nbsp;Bar</h1>"
     assert extract_text(html) == "Foo Bar"
 
