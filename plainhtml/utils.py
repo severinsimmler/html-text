@@ -131,4 +131,4 @@ class Newline:
 
 @dataclass
 class Context:
-    previous_tag: Union[DoubleNewline, Newline]
+    previous: Union[DoubleNewline, Newline]
