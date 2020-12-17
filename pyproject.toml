@@ -2,6 +2,7 @@
 name = "plainhtml"
 version = "0.1.0"
 description = "Extract plain text from HTML"
+readme = "README.md"
 authors = ["Severin Simmler <s.simmler@snapaddy.com>"]
 
 [tool.poetry.dependencies]
