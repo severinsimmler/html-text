@@ -14,5 +14,7 @@ def extract(html: str) -> str:
     str
         [description]
     """
+    if html is None or not html.strip():
+        return ""
     parser = Parser(html)
     return parser.extract()
