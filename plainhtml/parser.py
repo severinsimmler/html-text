@@ -26,12 +26,20 @@ class Parser:
             [description]
         """
         return Cleaner(
-            javascript=False,
-            page_structure=False,
-            forms=False,
-            annoying_tags=False,
-            remove_unknown_tags=False,
-            safe_attrs_only=False,
+            scripts=True,
+            javascript=True,
+            comments=True,
+            style=True,
+            inline_style=True,
+            links=True,
+            meta=True,
+            page_structure=True,
+            processing_instructions=True,
+            embedded=True,
+            frames=True,
+            forms=True,
+            annoying_tags=True,
+            remove_unknown_tags=True,
         )
 
     @cached_property
