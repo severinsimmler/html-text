@@ -43,7 +43,11 @@ def test_nbsp():
 def test_adjust_newline():
     html = u"<div>text 1</div><p><div>text 2</div></p>"
     assert plainhtml.extract(html) == "text 1\n\ntext 2"
-
+def test_punct_whitespace_preserved():
+    html = (u'<div><span>по</span><span>ле</span>, and  ,  '
+            u'<span>more </span>!<span>now</div>a (<b>boo</b>)')
+    text = plainhtml.extract(html)
+    assert text == u'по ле, and , more ! now a (boo)'
 
 """
 
@@ -56,10 +60,8 @@ def test_punct_whitespace():
 def test_punct_whitespace_preserved():
     html = (u'<div><span>по</span><span>ле</span>, and  ,  '
             u'<span>more </span>!<span>now</div>a (<b>boo</b>)')
-    text = plainhtml.extract(html, guess_punct_space=True, guess_layout=False)
+    text = plainhtml.extract(html)
     assert text == u'по ле, and , more ! now a (boo)'
-
-
 
 
 def test_guess_layout():
@@ -106,29 +108,4 @@ def test_personalize_newlines_sets():
                         double_newline_tags=DOUBLE_NEWLINE_TAGS | {'a'})
     assert text == 'text\n\nmore\n\nand more text\n\nand some more'
 
-
-def _webpage_paths():
-    webpages = sorted(glob.glob(os.path.join(ROOT, 'test_webpages', '*.html')))
-    extracted = sorted(glob.glob(os.path.join(ROOT, 'test_webpages','*.txt')))
-    return list(zip(webpages, extracted))
-
-
-def _load_file(path):
-    with open(path, 'rb') as f:
-        return f.read().decode('utf8')
-
-
-@pytest.mark.parametrize(['page', 'extracted'], _webpage_paths())
-def test_webpages(page, extracted):
-    html = _load_file(page)
-    if not six.PY3:
-        # FIXME: &nbsp; produces '\xa0' in Python 2, but ' ' in Python 3
-        # this difference is ignored in this test.
-        # What is the correct behavior?
-        html = html.replace('&nbsp;', ' ')
-    expected = _load_file(extracted)
-    assert plainhtml.extract(html) == expected
-
-    tree = cleaner.clean_html(parse_html(html))
-    assert etree_to_text(tree) == expected
 """

@@ -27,19 +27,19 @@ class Parser:
         """
         return Cleaner(
             scripts=True,
-            javascript=True,
+            javascript=False,
             comments=True,
             style=True,
-            inline_style=True,
             links=True,
             meta=True,
-            page_structure=True,
+            page_structure=False,
             processing_instructions=True,
             embedded=True,
             frames=True,
-            forms=True,
-            annoying_tags=True,
-            remove_unknown_tags=True,
+            forms=False,
+            annoying_tags=False,
+            remove_unknown_tags=False,
+            safe_attrs_only=False,
         )
 
     @cached_property
