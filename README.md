@@ -11,6 +11,6 @@ $ pip install plainhtml
 ```python
 >>> import plainhtml
 >>> html = "<html><body><p>foo</p><p>bar</p></body></html>"
->>> plainhtml.extract(html)
+>>> plainhtml.extract_text(html)
 'foo\n\nbar'
 ```
