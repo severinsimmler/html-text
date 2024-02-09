@@ -91,12 +91,12 @@ class Parser:
         tag : str
             [description]
         """
-        if not self.context.previous is DOUBLE_NEWLINE:
+        if self.context.previous is not DOUBLE_NEWLINE:
             if tag in DOUBLE_NEWLINE_TAGS:
                 self.chunks.append("\n" if self.context.previous is NEWLINE else "\n\n")
                 self.context.previous = DOUBLE_NEWLINE
             elif tag in NEWLINE_TAGS:
-                if not self.context.previous is NEWLINE:
+                if self.context.previous is not NEWLINE:
                     self.chunks.append("\n")
                 self.context.previous = NEWLINE
 

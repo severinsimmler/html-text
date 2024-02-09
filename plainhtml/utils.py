@@ -1,6 +1,5 @@
 import re
 from dataclasses import dataclass
-from typing import Optional, Union
 
 NEWLINE_TAGS = {
     "article",
@@ -102,12 +101,12 @@ def has_open_bracket_before(text: str) -> bool:
         return False
 
 
-def normalize_whitespace(text: Optional[str]) -> str:
+def normalize_whitespace(text: str | None) -> str:
     """[summary]
 
     Parameters
     ----------
-    text : Optional[str]
+    text : str | None
         [description]
 
     Returns
@@ -131,4 +130,4 @@ class Newline:
 
 @dataclass
 class Context:
-    previous: Union[DoubleNewline, Newline]
+    previous: DoubleNewline | Newline
