@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "plainhtml"
-version = "0.2.1"
+version = "0.2.2"
 description = "Extract plain text from HTML"
 readme = "README.md"
 authors = ["Severin Simmler <s.simmler@snapaddy.com>"]
