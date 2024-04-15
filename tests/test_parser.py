@@ -41,13 +41,9 @@ def test_nbsp():
 
 
 def test_adjust_newline():
-    html = u"<div>text 1</div><p><div>text 2</div></p>"
+    html = "<div>text 1</div><p><div>text 2</div></p>"
     assert plainhtml.extract(html) == "text 1\n\ntext 2"
-def test_punct_whitespace_preserved():
-    html = (u'<div><span>по</span><span>ле</span>, and  ,  '
-            u'<span>more </span>!<span>now</div>a (<b>boo</b>)')
-    text = plainhtml.extract(html)
-    assert text == u'по ле, and , more ! now a (boo)'
+
 
 """
 

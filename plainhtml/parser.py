@@ -6,7 +6,13 @@ from lxml.html import HtmlElement, HTMLParser
 from lxml.html.clean import Cleaner
 
 from plainhtml import utils
-from plainhtml.utils import DOUBLE_NEWLINE_TAGS, NEWLINE_TAGS, Context, DoubleNewline, Newline
+from plainhtml.utils import (
+    DOUBLE_NEWLINE_TAGS,
+    NEWLINE_TAGS,
+    Context,
+    DoubleNewline,
+    Newline,
+)
 
 DOUBLE_NEWLINE = DoubleNewline()
 NEWLINE = Newline()
@@ -108,7 +114,7 @@ class Parser:
         text : str
             [description]
         """
-        if (text := utils.normalize_whitespace(text)) :
+        if text := utils.normalize_whitespace(text):
             space = self.space_between(text)
             self.chunks.extend([space, text])
             self.context.previous = text

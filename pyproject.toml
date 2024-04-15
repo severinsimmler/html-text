@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "plainhtml"
-version = "0.1.2"
+version = "0.2.1"
 description = "Extract plain text from HTML"
 readme = "README.md"
 authors = ["Severin Simmler <s.simmler@snapaddy.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-lxml = "^5.1.0"
+lxml = { version = "^5.1.0", extras = ["html_clean"] }
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.2.1"
